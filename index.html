@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Della Resorts - Spa & Wellness</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- 0. HERO SECTION (Video Background) -->
+    <header class="hero-section">
+        <!-- Background Video -->
+        <video class="hero-bg-video" autoplay loop muted playsinline poster="assets/images/Section - HERO-full.png">
+            <source src="assets/images/Della SPA.mp4" type="video/mp4">
+        </video>
+
+        <!-- Dark Overlays -->
+        <div class="hero-overlay-top"></div>
+        <div class="hero-overlay-bottom"></div>
+
+        <!-- Navbar Logo & Hamburger -->
+        <nav class="hero-nav">
+            <img src="assets/images/Della-resort-logo.png" alt="Della Resorts Spa & Wellness Logo" class="hero-logo">
+            <div class="hamburger-menu" title="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+
+        <!-- Hero Main Text Overlay -->
+        <div class="hero-content">
+            <h1 class="hero-main-title">INDIA'S FIRST 24-HOUR SPA & WELLNESS</h1>
+            <div class="hero-sub-title">DELLA RESORTS IS WHERE ADRENALINE MEETS INNER STILLNESS.</div>
+            <p class="hero-paragraph">India's only round-the-clock spa and wellness - where sound bath at sunrise, post
+                adventure deep-tissue red light recovery and a midnight Himalayan crystal salt ritual all happen in the
+                same day. This is not a hotel with a spa. This is a wellness hub, an adventure sanctuary, and a
+                medical-wellness destination - engineered by Della Townships</p>
+            <div class="hero-script-tagline">To redefine how India lives, works and dreams.</div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. WHY SECTION -->
+        <section class="why-section">
+            <div class="why-container">
+                <h2 class="why-title">WHY</h2>
+                <div class="why-script-divider">
+                    <span class="script-title">Della Resorts Spa & Wellness</span>
+                </div>
+                <div class="why-subtitle">INDIA'S FIRST 24-HOUR SPA & WELLNESS</div>
+                <div class="why-tagline">Wellness should adapt to your lifestyle, not your schedule.</div>
+                <div class="why-description">
+                    <p>As India's first 24-hour spa and wellness destination, Della Spa redefines the luxury of time,
+                        offering uninterrupted access to transformative wellness experiences, whenever you need them.
+                    </p>
+                    <p>Designed for today's global traveller, business executive, wellness seeker, and weekend escape,
+                        Della Spa brings together recovery, relaxation, beauty, movement, and performance enhancement
+                        under one roof. From restorative therapies and biohacking experiences to signature spa rituals
+                        and holistic wellness, every experience is thoughtfully curated to help you recharge, recover,
+                        and restore balance, day or night.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCRIPT DIVIDER: Medical Wellness -->
+        <div class="section-script-divider">
+            <h2 class="script-title">Medical Wellness</h2>
+        </div>
+
+        <!-- 2. MEDICAL WELLNESS SECTION (BIOHACKING & REGENERATIVE THERAPIES) -->
+        <div class="cards-container">
+            <article class="feature-card" data-slide-index="0">
+                <div class="feature-content">
+                    <h2 class="feature-title">BIOHACKING & REGENERATIVE THERAPIES</h2>
+                    <p class="feature-text">Recode Your Vitality. Step beyond traditional wellness. Biohacking is the
+                        art of mastering your biology—optimizing sleep, energy, and recovery through science-backed
+                        innovation. Regenerative therapies amplify this transformation, awakening the body's natural
+                        ability to repair and renew. From red-light rejuvenation to cryo recovery, every experience is
+                        designed to help you perform, heal, and thrive at your peak.</p>
+                    <button class="btn-outline">BOOK YOUR WELLNESS JOURNEY</button>
+                </div>
+                <div class="feature-image-wrapper">
+                    <img src="assets/images/Slider-img-1.png" alt="Biohacking & Regenerative Therapies">
+                    <div class="slider-overlay-controls">
+                        <div class="pagination-numbers">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                        <div class="slider-arrows">
+                            <span class="slider-arrow slider-prev" title="Previous Slide">&larr;</span>
+                            <span class="slider-arrow slider-next" title="Next Slide">&rarr;</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- SCRIPT DIVIDER: Wellness Experiences -->
+            <div class="section-script-divider">
+                <h2 class="script-title">Wellness Experiences</h2>
+            </div>
+
+            <!-- 3. WELLNESS EXPERIENCES CARDS -->
+            <!-- Card 1: Energy Balancing Programs -->
+            <article class="feature-card reverse" data-slide-index="1">
+                <div class="feature-content">
+                    <h2 class="feature-title">ENERGY BALANCING PROGRAMS</h2>
+                    <p class="feature-text">Balanced energy supports cellular health, reduces the effects of chronic
+                        stress, and contributes to a longer, healthier life.</p>
+                    <button class="btn-outline">BOOK YOUR WELLNESS JOURNEY</button>
+                </div>
+                <div class="feature-image-wrapper">
+                    <img src="assets/images/Slider-img-2.png" alt="Energy Balancing Programs">
+                    <div class="slider-overlay-controls">
+                        <div class="pagination-numbers">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                        <div class="slider-arrows">
+                            <span class="slider-arrow slider-prev" title="Previous Slide">&larr;</span>
+                            <span class="slider-arrow slider-next" title="Next Slide">&rarr;</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 2: Movement & Fitness -->
+            <article class="feature-card" data-slide-index="2">
+                <div class="feature-content">
+                    <h2 class="feature-title">MOVEMENT & FITNESS</h2>
+                    <p class="feature-text">Transform your body and mind with energizing workouts — from Hydro Zumba and
+                        Aqua Aerobics to Tabata — designed to improve fitness, flexibility, balance, and cardiovascular
+                        health.</p>
+                    <button class="btn-outline">BOOK YOUR WELLNESS JOURNEY</button>
+                </div>
+                <div class="feature-image-wrapper">
+                    <img src="assets/images/Slider-img-3.png" alt="Movement & Fitness">
+                    <div class="slider-overlay-controls">
+                        <div class="pagination-numbers">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                        <div class="slider-arrows">
+                            <span class="slider-arrow slider-prev" title="Previous Slide">&larr;</span>
+                            <span class="slider-arrow slider-next" title="Next Slide">&rarr;</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 3: Massage Therapies -->
+            <article class="feature-card reverse" data-slide-index="3">
+                <div class="feature-content">
+                    <h2 class="feature-title">MASSAGE THERAPIES</h2>
+                    <p class="feature-text">At Della, wellness goes beyond the ordinary. Experience therapeutic massage
+                        therapies curated exclusively for you - using rare techniques, natural elements, and expert
+                        touch that you won't find anywhere else. From bamboo sticks and herbal poultices to heated
+                        stones, each therapy is designed to relax the body, detox the system, and rejuvenate the mind.
+                    </p>
+                    <button class="btn-outline">BOOK YOUR WELLNESS JOURNEY</button>
+                </div>
+                <div class="feature-image-wrapper">
+                    <img src="assets/images/Slider-img-4.png" alt="Massage Therapies">
+                    <div class="slider-overlay-controls">
+                        <div class="pagination-numbers">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                        <div class="slider-arrows">
+                            <span class="slider-arrow slider-prev" title="Previous Slide">&larr;</span>
+                            <span class="slider-arrow slider-next" title="Next Slide">&rarr;</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 4: Body Rituals -->
+            <article class="feature-card" data-slide-index="4">
+                <div class="feature-content">
+                    <h2 class="feature-title">BODY RITUALS</h2>
+                    <p class="feature-text">Revitalize your body with restorative rituals that cleanse, nourish, and
+                        leave your skin soft, smooth, and glowing.</p>
+                    <button class="btn-outline">BOOK YOUR WELLNESS JOURNEY</button>
+                </div>
+                <div class="feature-image-wrapper">
+                    <img src="assets/images/Slider-img-5.png" alt="Body Rituals">
+                    <div class="slider-overlay-controls">
+                        <div class="pagination-numbers">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                        <div class="slider-arrows">
+                            <span class="slider-arrow slider-prev" title="Previous Slide">&larr;</span>
+                            <span class="slider-arrow slider-next" title="Next Slide">&rarr;</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 5: Facial Wellness -->
+            <article class="feature-card reverse" data-slide-index="5">
+                <div class="feature-content">
+                    <h2 class="feature-title">FACIAL WELLNESS</h2>
+                    <p class="feature-text">Revitalize your skin with advanced facial therapies that deeply cleanse,
+                        hydrate, brighten, lift, and restore a healthy, youthful glow.</p>
+                    <button class="btn-outline">BOOK YOUR WELLNESS JOURNEY</button>
+                </div>
+                <div class="feature-image-wrapper">
+                    <img src="assets/images/Slider-img-6.png" alt="Facial Wellness">
+                    <div class="slider-overlay-controls">
+                        <div class="pagination-numbers">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                        <div class="slider-arrows">
+                            <span class="slider-arrow slider-prev" title="Previous Slide">&larr;</span>
+                            <span class="slider-arrow slider-next" title="Next Slide">&rarr;</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- 4. FAMILY WELLNESS SECTION -->
+        <section class="family-wellness-section">
+            <div class="family-wellness-content">
+                <h2 class="family-title">FAMILY WELLNESS</h2>
+                <p class="family-subtitle">Shared rituals designed for the people you travel with — from mother-daughter
+                    mornings to father-son afternoons and quiet evenings for two.</p>
+
+                <div class="family-gallery-grid">
+                    <div class="family-gallery-card">
+                        <img src="assets/images/Family-wellness-image-1.png" alt="Family Spa Moment 1">
+                    </div>
+                    <div class="family-gallery-card">
+                        <img src="assets/images/Family-wellness-image-2.png" alt="Family Spa Moment 2">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. SALON SECTION -->
+        <section class="salon-section">
+            <div class="salon-card-overlay">
+                <h2 class="salon-title">SALON</h2>
+                <button class="btn-outline-white">EXPLORE</button>
+            </div>
+        </section>
+
+        <!-- 6. RESERVE YOUR RITUAL BANNER -->
+        <section class="reserve-section">
+            <div class="reserve-container">
+                <img src="assets/images/Della-resort-logo.png" alt="Della Resorts Logo" class="reserve-logo">
+                <h2 class="reserve-title">Where Wellness Awaits Around the Clock</h2>
+
+                <div class="reserve-contact-buttons">
+                    <a href="tel:+919730177300" class="contact-btn">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                        </svg>
+                        +919730177300
+                    </a>
+                    <a href="#" class="contact-btn">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                        SPAMANAGER@DELLARESORTS.COM
+                    </a>
+                    <a href="mailto:SPAMANAGER@DELLARESORTS.COM" class="contact-btn">
+                        View Menu
+                    </a>
+                </div>
+
+                <div class="reserve-script-footer">Reserve Your Ritual</div>
+            </div>
+        </section>
+
+        <!-- 7. FREQUENTLY ASKED QUESTIONS (FAQ) -->
+        <section class="faq-section">
+            <div class="faq-container">
+                <div class="faq-title-col">
+                    <h2 class="faq-title">Frequently Asked Questions</h2>
+                </div>
+                <div class="faq-accordion">
+                    <div class="faq-item active">
+                        <div class="faq-question">
+                            <span>Do I need to book an appointment in advance?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes — we recommend reserving your preferred time and therapist ahead of arrival,
+                                especially during peak resort season, to guarantee availability.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How early should I arrive?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We recommend arriving 15 to 20 minutes prior to your scheduled treatment time to enjoy
+                                our relaxation lounge and complete your consultation.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What should I wear during my treatment?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We provide comfortable robes, slippers, and disposable undergarments. You may wear
+                                whatever makes you feel most comfortable.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What is the cancellation policy?</span>
+                            <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Cancellations made at least 4 hours in advance will incur no charge. Cancellations within
+                                4 hours may be subject to a 50% fee.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Interactive Slider & Accordion Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Slides Data
+            const slidesData = [
+                {
+                    title: "BIOHACKING & REGENERATIVE THERAPIES",
+                    text: "Recode Your Vitality. Step beyond traditional wellness. Biohacking is the art of mastering your biology—optimizing sleep, energy, and recovery through science-backed innovation. Regenerative therapies amplify this transformation, awakening the body's natural ability to repair and renew. From red-light rejuvenation to cryo recovery, every experience is designed to help you perform, heal, and thrive at your peak.",
+                    img: "assets/images/Slider-img-1.png"
+                },
+                {
+                    title: "ENERGY BALANCING PROGRAMS",
+                    text: "Balanced energy supports cellular health, reduces the effects of chronic stress, and contributes to a longer, healthier life.",
+                    img: "assets/images/Slider-img-2.png"
+                },
+                {
+                    title: "MOVEMENT & FITNESS",
+                    text: "Transform your body and mind with energizing workouts — from Hydro Zumba and Aqua Aerobics to Tabata — designed to improve fitness, flexibility, balance, and cardiovascular health.",
+                    img: "assets/images/Slider-img-3.png"
+                },
+                {
+                    title: "MASSAGE THERAPIES",
+                    text: "At Della, wellness goes beyond the ordinary. Experience therapeutic massage therapies curated exclusively for you - using rare techniques, natural elements, and expert touch that you won't find anywhere else. From bamboo sticks and herbal poultices to heated stones, each therapy is designed to relax the body, detox the system, and rejuvenate the mind.",
+                    img: "assets/images/Slider-img-4.png"
+                },
+                {
+                    title: "BODY RITUALS",
+                    text: "Revitalize your body with restorative rituals that cleanse, nourish, and leave your skin soft, smooth, and glowing.",
+                    img: "assets/images/Slider-img-5.png"
+                },
+                {
+                    title: "FACIAL WELLNESS",
+                    text: "Revitalize your skin with advanced facial therapies that deeply cleanse, hydrate, brighten, lift, and restore a healthy, youthful glow.",
+                    img: "assets/images/Slider-img-6.png"
+                }
+            ];
+
+            const TOTAL_SLIDES = 11; // Total indicator count as per design (01 to 11)
+
+            // Helper function to render pagination controls
+            function renderPagination(container, activeIndex) {
+                let html = '';
+                for (let i = 0; i < TOTAL_SLIDES; i++) {
+                    const numStr = String(i + 1).padStart(2, '0');
+                    const isActive = (i === activeIndex);
+
+                    html += `<span class="num-item ${isActive ? 'active' : ''}" data-target-index="${i}">${numStr}</span>`;
+                    if (isActive) {
+                        html += `<span class="pagination-dash">-------</span>`;
+                    }
+                }
+                container.innerHTML = html;
+            }
+
+            // Helper function to update card content
+            function updateCardSlide(card, newIndex) {
+                const slideCount = slidesData.length;
+                let targetIndex = ((newIndex % slideCount) + slideCount) % slideCount;
+
+                card.setAttribute('data-slide-index', targetIndex);
+
+                const slide = slidesData[targetIndex];
+                const titleEl = card.querySelector('.feature-title');
+                const textEl = card.querySelector('.feature-text');
+                const imgEl = card.querySelector('.feature-image-wrapper img');
+                const pagContainer = card.querySelector('.pagination-numbers');
+
+                // Add smooth transition class
+                card.classList.add('sliding');
+
+                setTimeout(() => {
+                    if (titleEl) titleEl.textContent = slide.title;
+                    if (textEl) textEl.textContent = slide.text;
+                    if (imgEl) {
+                        imgEl.src = slide.img;
+                        imgEl.alt = slide.title;
+                    }
+                    if (pagContainer) renderPagination(pagContainer, newIndex % TOTAL_SLIDES);
+
+                    card.classList.remove('sliding');
+                }, 200);
+            }
+
+            // Initialize all feature cards
+            document.querySelectorAll('.feature-card').forEach((card, index) => {
+                const initialIndex = parseInt(card.getAttribute('data-slide-index')) || index;
+                card.setAttribute('data-slide-index', initialIndex);
+
+                const pagContainer = card.querySelector('.pagination-numbers');
+                const prevArrow = card.querySelector('.slider-prev');
+                const nextArrow = card.querySelector('.slider-next');
+
+                // Initial pagination render
+                if (pagContainer) renderPagination(pagContainer, initialIndex);
+
+                // Previous arrow click
+                if (prevArrow) {
+                    prevArrow.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const curr = parseInt(card.getAttribute('data-slide-index')) || 0;
+                        updateCardSlide(card, curr - 1);
+                    });
+                }
+
+                // Next arrow click
+                if (nextArrow) {
+                    nextArrow.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const curr = parseInt(card.getAttribute('data-slide-index')) || 0;
+                        updateCardSlide(card, curr + 1);
+                    });
+                }
+
+                // Number click event delegation
+                if (pagContainer) {
+                    pagContainer.addEventListener('click', (e) => {
+                        const numItem = e.target.closest('.num-item');
+                        if (numItem) {
+                            const targetIdx = parseInt(numItem.dataset.targetIndex);
+                            if (!isNaN(targetIdx)) {
+                                updateCardSlide(card, targetIdx);
+                            }
+                        }
+                    });
+                }
+            });
+
+            // FAQ Accordion Toggle
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', () => {
+                    const item = question.parentElement;
+                    const isActive = item.classList.contains('active');
+
+                    // Close all accordion items
+                    document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+
+                    // Toggle clicked item
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
