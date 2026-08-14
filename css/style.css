@@ -121,9 +121,9 @@ a {
     left: 50%;
     width: 100vw;
     height: 56.25vw;
-    min-height: 125vh;
-    min-width: 222vh;
-    transform: translate(-50%, -46%) scale(1.65);
+    min-height: 140vh;
+    min-width: 250vh;
+    transform: translate(-50%, -36%) scale(2);
     border: none;
     pointer-events: none;
 }
@@ -166,8 +166,8 @@ a {
     top: 0;
     left: 0;
     right: 0;
-    height: 140px;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, transparent 100%);
+    height: 160px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
     z-index: 1;
     pointer-events: none;
 }
