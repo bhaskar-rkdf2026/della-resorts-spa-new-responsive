@@ -95,6 +95,23 @@ a {
     overflow: hidden;
     z-index: 0;
     pointer-events: none;
+    background-color: var(--bg-dark);
+}
+
+.hero-video-poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: opacity 0.8s ease;
+    pointer-events: none;
+}
+
+.hero-video-poster.hidden {
+    opacity: 0;
 }
 
 .hero-video-wrapper iframe,
@@ -106,8 +123,9 @@ a {
     height: 56.25vw;
     min-height: 100vh;
     min-width: 177.78vh;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1.35);
     border: none;
+    pointer-events: none;
 }
 
 /* Unmute / Mute toggle button on hero video */

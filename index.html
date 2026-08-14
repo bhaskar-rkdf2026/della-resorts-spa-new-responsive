@@ -28,6 +28,7 @@
     <header class="hero-section">
         <!-- YouTube Background Video -->
         <div class="hero-video-wrapper">
+            <img id="hero-poster" src="assets/images/Salon-hero-preview.png" alt="Della Resorts Spa & Wellness Preview" class="hero-video-poster">
             <iframe id="hero-youtube-player"
                 src="https://www.youtube.com/embed/aEXe2xo04Xo?autoplay=1&mute=0&loop=1&playlist=aEXe2xo04Xo&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
                 title="Della Resorts Spa & Wellness Video" frameborder="0"
@@ -403,13 +404,15 @@
             // Initially set button to Volume (Unmuted)
             setMuteBtn(false);
 
-            // Attempt unmuted play as soon as iframe is loaded
+            // Attempt unmuted play and fade out preview poster as soon as iframe is loaded
+            const heroPoster = document.getElementById('hero-poster');
             if (ytIframe) {
                 ytIframe.addEventListener('load', () => {
                     setTimeout(() => {
                         sendYtCommand('unMute');
                         sendYtCommand('playVideo');
-                    }, 500);
+                        if (heroPoster) heroPoster.classList.add('hidden');
+                    }, 800);
                 });
             }
 
@@ -482,10 +485,10 @@
                     "assets/images/movement & fitness/zumba-crossfit-tabata.webp"
                 ],
                 "massage-therapies": [
-                    "assets/images/message therapies/bamboo-massage-therapy.webp",
-                    "assets/images/message therapies/energizing-thai-massage.webp",
                     "assets/images/message therapies/hot-stone-therapy-massage.webp",
-                    "assets/images/message therapies/thai-poultice-massage.webp"
+                    "assets/images/message therapies/energizing-thai-massage.webp",
+                    "assets/images/message therapies/thai-poultice-massage.webp",
+                    "assets/images/message therapies/bamboo-massage-therapy.webp"
                 ],
                 "body-rituals": [
                     "assets/images/body rituals/body-exfoliation.webp",
