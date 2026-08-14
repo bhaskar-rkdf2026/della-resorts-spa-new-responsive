@@ -401,6 +401,7 @@
             }
 
             // Helper function to update card content
+            // Only the image slides — feature-content (title/text) stays fixed
             function updateCardSlide(card, newIndex) {
                 const slideCount = slidesData.length;
                 let targetIndex = ((newIndex % slideCount) + slideCount) % slideCount;
@@ -408,24 +409,21 @@
                 card.setAttribute('data-slide-index', targetIndex);
 
                 const slide = slidesData[targetIndex];
-                const titleEl = card.querySelector('.feature-title');
-                const textEl = card.querySelector('.feature-text');
+                const imgWrapper = card.querySelector('.feature-image-wrapper');
                 const imgEl = card.querySelector('.feature-image-wrapper img');
                 const pagContainer = card.querySelector('.pagination-numbers');
 
-                // Add smooth transition class
-                card.classList.add('sliding');
+                // Add smooth transition only on the image wrapper
+                if (imgWrapper) imgWrapper.classList.add('sliding');
 
                 setTimeout(() => {
-                    if (titleEl) titleEl.textContent = slide.title;
-                    if (textEl) textEl.textContent = slide.text;
                     if (imgEl) {
                         imgEl.src = slide.img;
                         imgEl.alt = slide.title;
                     }
                     if (pagContainer) renderPagination(pagContainer, newIndex % TOTAL_SLIDES);
 
-                    card.classList.remove('sliding');
+                    if (imgWrapper) imgWrapper.classList.remove('sliding');
                 }, 200);
             }
 

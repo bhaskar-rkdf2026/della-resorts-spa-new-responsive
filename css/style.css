@@ -380,13 +380,9 @@ a {
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-.feature-card.sliding .feature-image-wrapper img {
+.feature-image-wrapper.sliding img {
     opacity: 0.2;
-}
-
-.feature-card.sliding .feature-content {
-    opacity: 0.2;
-    transform: translateY(8px);
+    transform: scale(0.98);
 }
 
 .feature-card:hover .feature-image-wrapper img {
