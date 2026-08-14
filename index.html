@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Della Resorts - Spa & Wellness</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,11 +26,17 @@
 
     <!-- 0. HERO SECTION (Video Background) -->
     <header class="hero-section">
-        <!-- Background Video -->
-        <video id="hero-video" class="hero-bg-video" autoplay loop playsinline
-            poster="assets/images/Salon-hero-preview.png">
-            <source src="assets/images/Della SPA.mp4" type="video/mp4">
-        </video>
+        <!-- YouTube Background Video -->
+        <div class="hero-video-wrapper">
+            <iframe id="hero-youtube-player"
+                src="https://www.youtube.com/embed/aEXe2xo04Xo?autoplay=1&mute=0&loop=1&playlist=aEXe2xo04Xo&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+                title="Della Resorts Spa & Wellness"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+        </div>
 
         <!-- Unmute Button Overlay -->
         <button id="unmute-btn" class="unmute-btn" title="Click to mute">
@@ -266,7 +273,14 @@
                 <p class="salon-desc">From expert hair styling to flawless nails and grooming, our salon adds the
                     finishing touch to your wellness journey. Step out refreshed, polished, and picture-ready, any hour
                     of the day or night.</p>
-                <button class="btn-outline-white">EXPLORE</button>
+                <a href="https://www.dellaresorts.com/della-menu-pdf/Della_Spa1.pdf" target="_blank"
+                    rel="noopener noreferrer" class="btn-outline-white">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+                    </svg>
+                    VIEW MENU
+                </a>
             </div>
         </section>
 
@@ -362,50 +376,86 @@
 
     <!-- Interactive Slider & Accordion Script -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        // ── HERO YOUTUBE VIDEO: Autoplay unmuted, Mute toggle & Scroll Pause ──
+        let ytHeroPlayer = null;
+        let isPlayerReady = false;
 
-            // ── HERO VIDEO: Unmuted on load, button click → mute ────────────
-            const heroVideo = document.getElementById('hero-video');
+        const ICON_VOLUME = `<svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>`;
+        const ICON_MUTED = `<svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M16.5 12A4.5 4.5 0 0 0 14 7.97v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>`;
+
+        function setMuteBtn(isMuted) {
+            const unmuteBtn = document.getElementById('unmute-btn');
+            if (!unmuteBtn) return;
+            unmuteBtn.innerHTML = isMuted ? `${ICON_MUTED}` : `${ICON_VOLUME}`;
+            unmuteBtn.title = isMuted ? 'Click to unmute' : 'Click to mute';
+        }
+
+        // Load YouTube Iframe API
+        const ytScriptTag = document.createElement('script');
+        ytScriptTag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(ytScriptTag, firstScriptTag);
+
+        window.onYouTubeIframeAPIReady = function () {
+            ytHeroPlayer = new YT.Player('hero-youtube-player', {
+                events: {
+                    onReady: (event) => {
+                        isPlayerReady = true;
+                        // Attempt unmuted autoplay by default
+                        try {
+                            event.target.unMute();
+                            event.target.playVideo();
+                            setMuteBtn(false);
+                        } catch (e) {}
+
+                        // Fallback to muted if browser blocks unmuted autoplay
+                        setTimeout(() => {
+                            try {
+                                if (event.target.getPlayerState && event.target.getPlayerState() !== YT.PlayerState.PLAYING) {
+                                    event.target.mute();
+                                    event.target.playVideo();
+                                    setMuteBtn(true);
+                                }
+                            } catch (e) {}
+                        }, 1200);
+                    },
+                    onStateChange: (event) => {
+                        if (event.data === YT.PlayerState.ENDED) {
+                            try {
+                                event.target.playVideo(); // seamless loop
+                            } catch (e) {}
+                        }
+                    }
+                }
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
             const unmuteBtn = document.getElementById('unmute-btn');
 
-            const ICON_VOLUME = `<svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>`;
-            const ICON_MUTED = `<svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M16.5 12A4.5 4.5 0 0 0 14 7.97v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>`;
-
-            function setMuteBtn(isMuted) {
-                if (!unmuteBtn) return;
-                unmuteBtn.innerHTML = isMuted
-                    ? `${ICON_MUTED}`
-                    : `${ICON_VOLUME}`;
-            }
-
-            if (heroVideo) {
-                // Play unmuted on load
-                heroVideo.muted = false;
-                heroVideo.play().catch(() => {
-                    heroVideo.muted = true;
-                    heroVideo.play().catch(() => { });
-                });
-
-                // Set initial button state
-                setMuteBtn(heroVideo.muted);
-
-                // Toggle mute/unmute on button click — button never hides
-                if (unmuteBtn) {
-                    unmuteBtn.addEventListener('click', () => {
-                        heroVideo.muted = !heroVideo.muted;
-                        setMuteBtn(heroVideo.muted);
-                    });
-                }
-
-                // Pause when scrolled past 650px, resume when back
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY >= 650) {
-                        if (!heroVideo.paused) heroVideo.pause();
+            // Mute / Unmute Toggle Button
+            if (unmuteBtn) {
+                unmuteBtn.addEventListener('click', () => {
+                    if (!ytHeroPlayer || typeof ytHeroPlayer.isMuted !== 'function') return;
+                    if (ytHeroPlayer.isMuted()) {
+                        ytHeroPlayer.unMute();
+                        setMuteBtn(false);
                     } else {
-                        if (heroVideo.paused) heroVideo.play().catch(() => { });
+                        ytHeroPlayer.mute();
+                        setMuteBtn(true);
                     }
-                }, { passive: true });
+                });
             }
+
+            // Pause when scrolled past 650px, resume when back
+            window.addEventListener('scroll', () => {
+                if (!ytHeroPlayer || typeof ytHeroPlayer.pauseVideo !== 'function') return;
+                if (window.scrollY >= 650) {
+                    ytHeroPlayer.pauseVideo();
+                } else {
+                    ytHeroPlayer.playVideo();
+                }
+            }, { passive: true });
             // ────────────────────────────────────────────────────────────────
 
 
@@ -421,7 +471,7 @@
                 "energy-balancing": [
                     "assets/images/Enegry Balancing/cahakra-balancing.webp",
                     "assets/images/Enegry Balancing/floating-meditaiton.webp",
-                    "assets/images/Enegry Balancing/himalayan-salt-stone-therapy.webp",
+                    // "assets/images/Enegry Balancing/himalayan-salt-stone-therapy.webp",
                     "assets/images/Enegry Balancing/sound-healing.webp"
                 ],
                 "movement-fitness": [
