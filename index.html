@@ -376,7 +376,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            // ── HERO YOUTUBE VIDEO: PostMessage Controls (Mute/Unmute, Scroll Pause) ──
+            // ── HERO YOUTUBE VIDEO: Autoplay Unmuted & Controls ──────────────
             const ytIframe = document.getElementById('hero-youtube-player');
             const unmuteBtn = document.getElementById('unmute-btn');
             let isYtMuted = false;
@@ -403,15 +403,39 @@
             // Initially set button to Volume (Unmuted)
             setMuteBtn(false);
 
+            // Attempt unmuted play as soon as iframe is loaded
+            if (ytIframe) {
+                ytIframe.addEventListener('load', () => {
+                    setTimeout(() => {
+                        sendYtCommand('unMute');
+                        sendYtCommand('playVideo');
+                    }, 500);
+                });
+            }
+
+            // Auto-unmute on first user interaction if browser policy deferred audio
+            const enableAudioOnFirstInteraction = () => {
+                if (!isYtMuted) {
+                    sendYtCommand('unMute');
+                    sendYtCommand('playVideo');
+                }
+                window.removeEventListener('pointerdown', enableAudioOnFirstInteraction);
+                window.removeEventListener('keydown', enableAudioOnFirstInteraction);
+            };
+            window.addEventListener('pointerdown', enableAudioOnFirstInteraction, { once: true });
+            window.addEventListener('keydown', enableAudioOnFirstInteraction, { once: true });
+
             // Mute / Unmute Button Click
             if (unmuteBtn) {
-                unmuteBtn.addEventListener('click', () => {
+                unmuteBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
                     isYtMuted = !isYtMuted;
                     if (isYtMuted) {
                         sendYtCommand('mute');
                         setMuteBtn(true);
                     } else {
                         sendYtCommand('unMute');
+                        sendYtCommand('playVideo');
                         setMuteBtn(false);
                     }
                 });
@@ -428,6 +452,7 @@
                 } else {
                     if (isYtPaused) {
                         sendYtCommand('playVideo');
+                        if (!isYtMuted) sendYtCommand('unMute');
                         isYtPaused = false;
                     }
                 }
