@@ -121,9 +121,9 @@ a {
     left: 50%;
     width: 100vw;
     height: 56.25vw;
-    min-height: 100vh;
-    min-width: 177.78vh;
-    transform: translate(-50%, -50%) scale(1.35);
+    min-height: 125vh;
+    min-width: 222vh;
+    transform: translate(-50%, -46%) scale(1.65);
     border: none;
     pointer-events: none;
 }
