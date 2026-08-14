@@ -26,9 +26,19 @@
     <!-- 0. HERO SECTION (Video Background) -->
     <header class="hero-section">
         <!-- Background Video -->
-        <video class="hero-bg-video" autoplay loop playsinline poster="assets/images/Salon-hero-preview.png">
+        <video id="hero-video" class="hero-bg-video" autoplay loop playsinline
+            poster="assets/images/Salon-hero-preview.png">
             <source src="assets/images/Della SPA.mp4" type="video/mp4">
         </video>
+
+        <!-- Unmute Button Overlay -->
+        <button id="unmute-btn" class="unmute-btn" title="Click to mute">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+                <path
+                    d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+            </svg>
+            <span>MUTE</span>
+        </button>
 
         <!-- Dark Overlays -->
         <div class="hero-overlay-top"></div>
@@ -353,7 +363,54 @@
     <!-- Interactive Slider & Accordion Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            // ── HERO VIDEO: Unmuted on load, button click → mute ────────────
+            const heroVideo = document.getElementById('hero-video');
+            const unmuteBtn = document.getElementById('unmute-btn');
+
+            const ICON_VOLUME = `<svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>`;
+            const ICON_MUTED = `<svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M16.5 12A4.5 4.5 0 0 0 14 7.97v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>`;
+
+            function setMuteBtn(isMuted) {
+                if (!unmuteBtn) return;
+                unmuteBtn.innerHTML = isMuted
+                    ? `${ICON_MUTED}`
+                    : `${ICON_VOLUME}`;
+            }
+
+            if (heroVideo) {
+                // Play unmuted on load
+                heroVideo.muted = false;
+                heroVideo.play().catch(() => {
+                    heroVideo.muted = true;
+                    heroVideo.play().catch(() => { });
+                });
+
+                // Set initial button state
+                setMuteBtn(heroVideo.muted);
+
+                // Toggle mute/unmute on button click — button never hides
+                if (unmuteBtn) {
+                    unmuteBtn.addEventListener('click', () => {
+                        heroVideo.muted = !heroVideo.muted;
+                        setMuteBtn(heroVideo.muted);
+                    });
+                }
+
+                // Pause when scrolled past 650px, resume when back
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY >= 650) {
+                        if (!heroVideo.paused) heroVideo.pause();
+                    } else {
+                        if (heroVideo.paused) heroVideo.play().catch(() => { });
+                    }
+                }, { passive: true });
+            }
+            // ────────────────────────────────────────────────────────────────
+
+
             // Per-card images: key = data-card-id attribute on article.feature-card
+
             const cardImages = {
                 "biohacking": [
                     "assets/images/Biohacking/cryo-facial.webp",
