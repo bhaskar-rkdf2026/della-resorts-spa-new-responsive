@@ -107,7 +107,7 @@
                     <a href="tel:+919730177300" class="btn-outline">BOOK YOUR WELLNESS JOURNEY</a>
                 </div>
                 <div class="feature-image-wrapper">
-                    <img src="assets/images/Slider-img-1.png" alt="Biohacking & Regenerative Therapies">
+                    <img src="assets/images/Biohacking/cryo-facial.webp" alt="Biohacking &amp; Regenerative Therapies">
                     <div class="slider-overlay-controls">
                         <div class="pagination-numbers">
                             <!-- Populated dynamically by JS -->
@@ -135,7 +135,7 @@
                     <a href="tel:+919730177300" class="btn-outline">BOOK YOUR WELLNESS JOURNEY</a>
                 </div>
                 <div class="feature-image-wrapper">
-                    <img src="assets/images/Slider-img-2.png" alt="Energy Balancing Programs">
+                    <img src="assets/images/Enegry Balancing/cahakra-balancing.webp" alt="Energy Balancing Programs">
                     <div class="slider-overlay-controls">
                         <div class="pagination-numbers">
                             <!-- Populated dynamically by JS -->
@@ -158,7 +158,7 @@
                     <a href="tel:+919730177300" class="btn-outline">BOOK YOUR WELLNESS JOURNEY</a>
                 </div>
                 <div class="feature-image-wrapper">
-                    <img src="assets/images/Slider-img-3.png" alt="Movement & Fitness">
+                    <img src="assets/images/movement & fitness/aerobics.webp" alt="Movement & Fitness">
                     <div class="slider-overlay-controls">
                         <div class="pagination-numbers">
                             <!-- Populated dynamically by JS -->
@@ -183,7 +183,7 @@
                     <a href="tel:+919730177300" class="btn-outline">BOOK YOUR WELLNESS JOURNEY</a>
                 </div>
                 <div class="feature-image-wrapper">
-                    <img src="assets/images/Slider-img-4.png" alt="Massage Therapies">
+                    <img src="assets/images/message therapies/bamboo-massage-therapy.webp" alt="Massage Therapies">
                     <div class="slider-overlay-controls">
                         <div class="pagination-numbers">
                             <!-- Populated dynamically by JS -->
@@ -205,7 +205,7 @@
                     <a href="tel:+919730177300" class="btn-outline">BOOK YOUR WELLNESS JOURNEY</a>
                 </div>
                 <div class="feature-image-wrapper">
-                    <img src="assets/images/Slider-img-5.png" alt="Body Rituals">
+                    <img src="assets/images/body rituals/body-exfoliation.webp" alt="Body Rituals">
                     <div class="slider-overlay-controls">
                         <div class="pagination-numbers">
                             <!-- Populated dynamically by JS -->
@@ -227,7 +227,7 @@
                     <a href="tel:+919730177300" class="btn-outline">BOOK YOUR WELLNESS JOURNEY</a>
                 </div>
                 <div class="feature-image-wrapper">
-                    <img src="assets/images/Slider-img-6.png" alt="Facial Wellness">
+                    <img src="assets/images/facial wellness/facial-for-anti-aging.webp" alt="Facial Wellness">
                     <div class="slider-overlay-controls">
                         <div class="pagination-numbers">
                             <!-- Populated dynamically by JS -->
@@ -485,14 +485,21 @@
 
                 if (imgWrapper) imgWrapper.classList.add('sliding');
 
-                setTimeout(() => {
+                // Preload new image, swap only after it's ready
+                const tempImg = new Image();
+                tempImg.src = images[targetIndex];
+                tempImg.onload = () => {
                     if (imgEl) {
-                        imgEl.src = images[targetIndex];
+                        imgEl.src = tempImg.src;
                         imgEl.alt = card.querySelector('.feature-title')?.textContent || '';
                     }
                     if (pagContainer) renderPagination(pagContainer, targetIndex, total);
-                    if (imgWrapper) imgWrapper.classList.remove('sliding');
-                }, 200);
+                    setTimeout(() => {
+                        if (imgWrapper) imgWrapper.classList.remove('sliding');
+                    }, 50);
+                };
+                // Fallback if image is already cached (onload may not fire)
+                if (tempImg.complete) tempImg.onload();
             }
 
             // Initialize all feature cards
@@ -506,9 +513,12 @@
 
                 card.setAttribute('data-slide-index', '0');
 
-                // Set initial image
+                // Set initial image (already set in HTML, but sync anyway)
                 const imgEl = card.querySelector('.feature-image-wrapper img');
                 if (imgEl) imgEl.src = images[0];
+
+                // Preload all images for this card
+                images.forEach(src => { const p = new Image(); p.src = src; });
 
                 const pagContainer = card.querySelector('.pagination-numbers');
                 const prevArrow = card.querySelector('.slider-prev');
